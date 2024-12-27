@@ -1,0 +1,12 @@
+courses = ['Principle of programming','Discret Mathematics','Software Engineering','Fundamentals of Database']
+print(courses[0])
+print(courses[-1])
+print(courses[:2])
+print(courses[::])
+courses.append('Inclusiveness')
+print(courses)
+print(courses.index('Inclusiveness'))
+print(courses.pop(0))
+print(courses)
+print(courses.sort())
+print(courses)

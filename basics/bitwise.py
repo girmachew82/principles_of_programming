@@ -1,0 +1,11 @@
+h = 2 # 10
+g = 3 # 11
+print(f"{h} & {g} = {h & g}")
+print(f"{h} | {g} = {h | g}")
+print(f"{h} & {h} = {h & g}")
+print(f"{h} | {h} = {h | h}")	 
+print(f"{g} | {g} = {g | g}")
+print(f"~{g}  = {~g}")
+print(f"{h} ^ {g} = {h ^ g}")
+print(f"shift {g} to the left by 1 = {g<<1}")
+print(f"shift {h} to the right by 1 = {h>>1}")
