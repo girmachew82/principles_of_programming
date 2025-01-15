@@ -22,6 +22,7 @@ def add(x, y):
     '''
     return x + y
 
+
 # position only
 '''
 restricted to only use positional parameters as there is a / in the function definition
@@ -63,12 +64,11 @@ def sum(*x):
     for i in x:
         sum += i
     return sum
-'''
+
 x, y = 3, 4.0
-print(f"{x} - {y} = {add(x, y)}") 
-print(f"{10} - {10} = {add(x = 10, y = 10)}") 
+print(f"{x} + {y} = {add(x, y)}") 
+print(f"{10} + {10} = {add(x = 10, y = 10)}") 
 print(f"{x} - {y} = {sub(x, y)}") 
 print(f"{x} * {y} = {mul(x=2, y=2)}") 
 print(f"{x} / {2} = {div(x, y=2)}") 
 print(f"{x} / {y} = {div(x, y)}") 
-'''

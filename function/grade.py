@@ -55,7 +55,7 @@ def get_grade(total_mark: float) -> str:
         grade = "NG"
     return grade
 
-print(get_grade(80))
+print("Students's mark is 80 and the grade is : ",get_grade(80))
 print(get_grade(50))
 print(get_grade(30))
 #print(get_grade())
