@@ -1,49 +1,64 @@
 import tkinter as tk
 from tkinter import messagebox
+from tkinter.filedialog import askopenfilename
 
-# Predefined credentials
-USERNAME = "admin"
-PASSWORD = "password123"
 
-# Function to validate login
 def login():
-    username = username_entry.get()
-    password = password_entry.get()
-    
-    if username == USERNAME and password == PASSWORD:
-        messagebox.showinfo("Login Successful", "Welcome!")
-        root.destroy()  # Close the login window
-        open_dashboard()  # Open the dashboard
+    usename = user_name.get()
+    pasord = password.get()
+    print(user_name.get())
+    print(password.get())
+    if not usename  or not pasord:
+        messagebox.showerror("Error","Username and password are required")
     else:
-        messagebox.showerror("Login Failed", "Invalid username or password")
+        root.destroy()
+        dash()
 
-# Function to open the dashboard
-def open_dashboard():
+def clear():
+    user_name.delete(0, tk.END)
+    password.delete(0, tk.END)
+
+def dash():
     dashboard = tk.Tk()
     dashboard.title("Dashboard")
-    dashboard.geometry("300x200")
-    tk.Label(dashboard, text="Welcome to the Dashboard!", font=("Arial", 16)).pack(pady=20)
-    tk.Button(dashboard, text="Exit", command=dashboard.destroy).pack(pady=20)
+    dashboard.geometry("400x400")
+    menu = tk.Menu(dashboard)
+    dashboard.config(menu=menu)
+    filemenu = tk.Menu(menu)
+    menu.add_cascade(label="File",menu=filemenu)
+    filemenu.add_command(label="New", command=NewFile)
+    filemenu.add_command(label="Open...", command=OpenFile)
+    filemenu.add_separator()
+    filemenu.add_command(label="Exit", command=dashboard.quit)
+
+    helpmenu = tk.Menu(menu)
+    menu.add_cascade(label="Help", menu=helpmenu)
+    helpmenu.add_command(label="About...", command=About)
     dashboard.mainloop()
 
-# Create the main window
+def NewFile():
+    print("New File!")
+def OpenFile():
+    name = askopenfilename()
+    print(name)
+def About():
+    print("This is a simple example of a menu")
+   
+
+
 root = tk.Tk()
 root.title("Login")
 root.geometry("300x200")
 
-# Username label and entry
-tk.Label(root, text="Username:", font=("Arial", 12)).grid(row=0, column=0, padx=10, pady=10)
-username_entry = tk.Entry(root, font=("Arial", 12))
-username_entry.grid(row=0, column=1, padx=10, pady=10)
+label = tk.Label(root, text="Username:").grid(row=0, column=0, pady=20, padx=20)
+user_name = tk.Entry(root)
+user_name.grid(row=0, column=1)
 
-# Password label and entry
-tk.Label(root, text="Password:", font=("Arial", 12)).grid(row=1, column=0, padx=10, pady=10)
-password_entry = tk.Entry(root, font=("Arial", 12), show="*")
-password_entry.grid(row=1, column=1, padx=10, pady=10)
+label = tk.Label(root, text="Password:").grid(row=1, column=0, pady=5, padx=20)
+password = tk.Entry(root, show="*")
+password.grid(row=1, column=1)
 
-# Login button
-login_button = tk.Button(root, text="Login", font=("Arial", 12), command=login)
-login_button.grid(row=2, column=0, columnspan=2, pady=20)
+login_btn = tk.Button(root, text="Login", command=login).grid(row=2, column=0)
+clear_btn = tk.Button(root, text="Clear", command=clear).grid(row=2, column=1)
 
-# Run the main loop
 root.mainloop()
